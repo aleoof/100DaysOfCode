@@ -1,0 +1,32 @@
+{
+  "name": "server-api",
+  "version": "1.0.0",
+  "description": "Api do projeto de blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleoof/100DaysOfCode.git"
+  },
+  "keywords": [
+    "100DaysOfCode",
+    "blog",
+    "learning",
+    "tests"
+  ],
+  "author": "Alexandre Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleoof/100DaysOfCode/issues"
+  },
+  "homepage": "https://github.com/aleoof/100DaysOfCode#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.6.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
