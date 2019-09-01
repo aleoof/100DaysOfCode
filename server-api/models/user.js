@@ -6,11 +6,6 @@ class Users {
         this.email = '';
         this.password = ''
     }
-
-    displayName(name){
-        this.name = name
-        console.log(this.name);
-    }
 }
 
-module.exports = new Users()
+module.exports = Users
