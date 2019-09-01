@@ -1,4 +1,4 @@
-class Post(){
+class Post{
     constructor(){
         this.id = null,
         this.title = ''
