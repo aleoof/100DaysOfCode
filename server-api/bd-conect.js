@@ -6,7 +6,7 @@ exports.creationDatabase = (req, res) => {
         port: 3306,
         user: 'root',
         password: '',
-        database: 'blog_database'
+        database: 'blog'
     });
     
     connection.connect((err) => {
@@ -33,7 +33,7 @@ function database(conn){
 
 function createUsersTable(coon){
     const sql = "CREATE TABLE IF NOT EXISTS Users (\n"+
-    "id INT NOT NULL /n"+
+    "id INT AUTO_INCREMENT NOT NULL /n"+
     "name VARCHAR(100) NOT NULL /n"+
     "email VARCHAR(100) NOT NULL /n"+
     "password VARCHAR(100) NOT NULL /n"+
@@ -49,7 +49,7 @@ function createUsersTable(coon){
 
 function createPostsTable(coon){
     const sql = "CREATE TABLE IF NOT EXISTS Posts (\n"+
-    "id INT NOT NULL /n"+
+    "id INT AUTO_INCREMENT NOT NULL /n"+
     "title VARCHAR(100) NOT NULL /n"+
     "image TEXT NOT NULL /n"+
     "post TEXT NOT NULL /n"+

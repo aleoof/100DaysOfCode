@@ -1,11 +1,9 @@
 const userModel = require('../models/user')
 
+const sql = require('../bd-conect')
+
 exports.get = async (req, res, next) => {
-    let allUsers = new userModel();
-    allUsers.id = 1;
-    allUsers.name = 'Alexandre Oliveira',
-    allUsers.password = '123456';
-    allUsers.email = 'alexandre_osvaldo@hotmail.com'
+    let allUsers = sql.creationDatabase('SELECT * FROM User')
     try{
         res.status(200).send(allUsers);
     } catch (e) {
@@ -13,4 +11,12 @@ exports.get = async (req, res, next) => {
             message: 'Error on request'
         })
     }
+}
+
+exports.post = async (req, res, next) => {
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    sql.creationDatabase(`INSENT IN TO User(name, email, password) VALUES (${name}, ${email}, ${password})`, res)
+
 }
