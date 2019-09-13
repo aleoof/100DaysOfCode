@@ -12,3 +12,13 @@ exports.get = async (req, res, next) => {
     });
   }
 };
+
+exports.post = async (req, res, next) => {
+  let posts = new PostModel(req.body);
+  sql.creationDatabase(
+    `INSERT IN TO Post(title, image, content) VALUE (${posts.title}, ${posts.image}, ${posts.content})`,
+    res
+  );
+};
+
+exports.update = async()

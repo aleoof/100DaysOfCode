@@ -6,7 +6,7 @@ exports.creationDatabase = (req, res) => {
         port: 3306,
         user: 'root',
         password: '',
-        database: 'blog'
+        database: 'Blog'
     });
     
     connection.connect((err) => {
@@ -21,9 +21,11 @@ exports.creationDatabase = (req, res) => {
 }
 
 
-function database(conn){
-    const sql = "CREATE IF NOT EXISTS DATABASE blog";
-    conn.query(sql, (err, result, field) => {
+async function database(conn){
+    const sql = "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"+
+    "CREATE IF NOT EXISTS DATABASE Blog /n"+
+    "USE Blog";
+    await conn.query(sql, (err, result, field) => {
         if(err){
             return console.log(err);
         }
@@ -52,7 +54,7 @@ function createPostsTable(coon){
     "id INT AUTO_INCREMENT NOT NULL /n"+
     "title VARCHAR(100) NOT NULL /n"+
     "image TEXT NOT NULL /n"+
-    "post TEXT NOT NULL /n"+
+    "content TEXT NOT NULL /n"+
     ")"+
     "ALTER TABLE Posts ADD CONSTRAINT 'fk_user' FOREIGN KEY ('id') REFERENCES 'Users' ('id') ";
 
