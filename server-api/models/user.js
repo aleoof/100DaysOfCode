@@ -4,7 +4,7 @@ class Users {
         this.id = null;
         this.name = '';
         this.email = '';
-        this.password = ''
+        this.password = '';
     }
 }
 

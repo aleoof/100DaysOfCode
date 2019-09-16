@@ -1,24 +1,24 @@
 const PostModel = require('../models/post');
-
 const sql = require('../bd-conect');
 
+let posts = new PostModel();
+
 exports.get = async (req, res, next) => {
-  let getAllPost = sql.creationDatabase('SELECT * FROM Post');
-  try {
-    res.status(200).send(getAllPost);
-  } catch (e) {
-    res.status(500).send({
-      message: 'Error on process request',
-    });
-  }
+  let getAllPost = sql.creationDatabase('SELECT * FROM posts', res);
 };
 
 exports.post = async (req, res, next) => {
-  let posts = new PostModel(req.body);
-  sql.creationDatabase(
-    `INSERT IN TO posts(title, image, content) VALUE (${posts.title}, ${posts.image}, ${posts.content})`
-    );
-    res.json(req.body)
+  posts = req.body;
+  sql(
+    `INSERT IN TO posts(title, image, content, idUser) VALUES ("${posts.title}", "${posts.image}", "${posts.content}", ${parseInt(posts.idUser)})`,
+    res
+  );
 };
 
-// exports.update = async()
+exports.delete = async (req, res, next) => {
+  posts = req.body;
+  sql(
+    `DELETE FROM posts WHERE id= ${parseInt(posts.id)}`,
+    res
+  )
+}

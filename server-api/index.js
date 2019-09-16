@@ -24,7 +24,3 @@ app.use(bodyParser.urlencoded({
 
 app.use('/posts', postRoute);
 app.use('/user', userRoute);
-
-// app.get('/', (req, res) => {
-//     res.send('<h1>hello world</h1>')
-// })
