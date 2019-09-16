@@ -9,7 +9,11 @@ const postRoute = require ('./routes/posts-routers')
 const userRoute = require('./routes/users-routers')
 
 app.listen(port, () => {
-    mysql.creationDatabase();
+    let isFirstTime = 0
+    isFirstTime +=1
+    if (isFirstTime === 0) {
+        mysql();
+    }
     console.log(`App is running on port http://localhost:${port}`)
 })
 

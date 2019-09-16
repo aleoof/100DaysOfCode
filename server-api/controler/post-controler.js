@@ -16,9 +16,9 @@ exports.get = async (req, res, next) => {
 exports.post = async (req, res, next) => {
   let posts = new PostModel(req.body);
   sql.creationDatabase(
-    `INSERT IN TO Post(title, image, content) VALUE (${posts.title}, ${posts.image}, ${posts.content})`,
-    res
-  );
+    `INSERT IN TO posts(title, image, content) VALUE (${posts.title}, ${posts.image}, ${posts.content})`
+    );
+    res.json(req.body)
 };
 
-exports.update = async()
+// exports.update = async()
