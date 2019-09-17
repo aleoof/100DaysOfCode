@@ -14,12 +14,12 @@ function creationDatabase(req, res) {
     if (err) {
       return console.log(err);
     } else {
-      if (isFirstConnection === true) {
+      // if (isFirstConnection === true) {
         // database(connection);
-        createUsersTable(conn)
-        isFirstConnection = false;
+        database(connection)
+        // isFirstConnection = false;
         console.log('conectou');
-      }
+      // }
     }
   });
 
@@ -31,24 +31,30 @@ function creationDatabase(req, res) {
     }
     connection.end();
   });
+
+  // connection.query(req).toPromise()
+  // .then(result => result)
+  // .catch(err => console.log(err))
+  // .finally(connection => connection.end())
 }
 
-// async function database(conn) {
-//   let sql = 'CREATE DATABASE IF NOT EXISTS Blog';
 
-//   let createDatabase = new Promise((res, rej) => {
-//     res(
-//       conn.query(sql, (err, result, field) => {
-//         if (err) {
-//           return console.log(err);
-//         }
-//         console.log('Created database');
-//       })
-//     );
-//   }).then(() => {
-//     createUsersTable(conn);
-//   });
-// }
+async function database(conn) {
+  let sql = 'CREATE DATABASE IF NOT EXISTS Blog';
+
+  let createDatabase = new Promise((res, rej) => {
+    res(
+      conn.query(sql, (err, result, field) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log('Created database');
+      })
+    );
+  }).then(() => {
+    createUsersTable(conn);
+  });
+}
 
 function createUsersTable(conn) {
   const sql =
